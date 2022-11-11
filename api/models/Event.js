@@ -15,33 +15,30 @@ module.exports = (sequelize, DataTypes) => {
       },
       date: {
         type: DataTypes.DATEONLY,
-        allowNull: false,
         validate: { isDate: true },
+        notEmpty: true,
       },
       description: {
         type: DataTypes.TEXT,
-        allowNull: false,
         validate: { 
-            
+          notEmpty: true,
          },
       },
       link: {
         type: DataTypes.STRING,
-        allowNull: true,
         validate: { 
             isUrl: true,
          },
       },
       price: {
         type: DataTypes.DOUBLE,
-        allowNull: false,
         validate: { 
+            notEmpty: true,
             min: 0,
          },
       },
       address: {
         type: DataTypes.STRING,
-        allowNull: false,
         validate: { 
             len: [3, 250],
             notEmpty: true,
@@ -56,8 +53,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Event.associate = (models) => {
     // associations can be defined here
-    models.Event.belongsTo(models.User);
-    models.Event.belongsTo(models.Category);
+    // models.Event.belongsTo(models.User);
+    // models.Event.belongsTo(models.Category);
   };
 
   return Event;
