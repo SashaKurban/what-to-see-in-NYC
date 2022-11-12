@@ -51,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  // uncomment when User and Category are implemented
   Event.associate = (models) => {
     // associations can be defined here
     // models.Event.belongsTo(models.User);
