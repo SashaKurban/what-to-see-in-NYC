@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 const { Model } = require("sequelize");
 const bcrypt = require("bcryptjs");
 
@@ -7,15 +7,29 @@ module.exports = (sequelize, DataTypes) => {
 
   User.init(
     {
-        username: {type: DataTypes.STRING},
-        bio: {type: DataTypes.STRING},
+        username: {
+          type: DataTypes.STRING,
+          validate: {
+            len: [3, 250],
+            notEmpty: true,
+          },
+          unique: true,
+        },
+        bio: {
+          type: DataTypes.STRING,
+          validate: {
+            len: [3, 250],
+            notEmpty: true,
+          }
+        },
         email: {
-            type: DataTypes.STRING,
-            validate: {
-              isEmail: true,
-            },
-            unique: true,
-            allowNull: false,
+          type: DataTypes.STRING,
+          validate: {
+            len: [3, 250],
+            notEmpty: true,
+            isEmail: true,
+          },
+          unique: true,
         },
         passwordHash: { type: DataTypes.STRING },
         password: {
@@ -27,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
               }
             }
           }
-        },
+        }
     },
     {
       sequelize,
