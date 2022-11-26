@@ -9,12 +9,20 @@ router.get("/", (req, res) => {
     Event.findAll({}).then((allEvents) => res.json(allEvents));
 });
 
+//get all events belonging to user
+router.get("/my-events", passport.isAuthenticated(), (req, res) => {
+  const user = req.user;
+  user.getEvents().then((allEvents) => res.json(allEvents));
+});
+
+
 // post a new event
 router.post("/", passport.isAuthenticated(), (req, res) => {
   let { title, description, address, date, price, link} = req.body;
   let userId = (req.user).id;
   Event.create({ title, description, address, date, price, link, UserId: userId})
     .then((newEvent) => {
+      (req.user).addEvent(newEvent);
       res.status(201).json(newEvent);
     })
     .catch((err) => {
