@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("../middlewares/authentication");
 const db = require("../models");
 const { Event } = db;
 
@@ -9,12 +10,12 @@ router.get("/", (req, res) => {
 });
 
 // post a new event
-router.post("/", (req, res) => {
-  let { title, description, address, date, price, link } = req.body;
-  console.log(req.user);
-  Event.create({ title, description, address, date, price, link })
+router.post("/", passport.isAuthenticated(), (req, res) => {
+  let { title, description, address, date, price, link} = req.body;
+  let userId = (req.user).id;
+  Event.create({ title, description, address, date, price, link, UserId: userId})
     .then((newEvent) => {
-      res.status(201).json(newEvent);
+      res.status(201).json(userId);
     })
     .catch((err) => {
       res.status(400).json(err);
