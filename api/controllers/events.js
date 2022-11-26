@@ -15,7 +15,7 @@ router.post("/", passport.isAuthenticated(), (req, res) => {
   let userId = (req.user).id;
   Event.create({ title, description, address, date, price, link, UserId: userId})
     .then((newEvent) => {
-      res.status(201).json(userId);
+      res.status(201).json(newEvent);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -23,7 +23,7 @@ router.post("/", passport.isAuthenticated(), (req, res) => {
 });
 
 // update event
-router.put("/:id", (req, res) => {
+router.put("/:id", passport.isAuthenticated(), (req, res) => {
     let { title, description, address, date, price, link } = req.body;
     const { id } = req.params;
     Event.findByPk(id).then((event) => {
@@ -49,11 +49,13 @@ router.put("/:id", (req, res) => {
   });
   
 // delete an event
-router.delete("/:id", (req, res) => {
+router.delete("/:id", passport.isAuthenticated(), (req, res) => {
   const { id } = req.params;
   Event.findByPk(id).then((event) => {
     if (!event) {
       return res.sendStatus(404);
+    }else if(event.UserId != (req.user).id){
+      return res.sendStatus(401);
     }
     event.destroy();
     res.sendStatus(204);
