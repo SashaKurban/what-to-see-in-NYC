@@ -29,6 +29,8 @@ router.put("/:id", passport.isAuthenticated(), (req, res) => {
     Event.findByPk(id).then((event) => {
       if (!event) {
         return res.sendStatus(404);
+      }else if(event.UserId != (req.user).id){
+        return res.sendStatus(401);
       }
       event.title = title;
       event.address = address;
