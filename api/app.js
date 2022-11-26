@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 const expressSession = require("express-session");
 const morgan = require("morgan");
 const passport = require("./middlewares/authentication");
@@ -6,6 +7,7 @@ const path = require("path");
 const db = require("./models");
 const app = express();
 const PORT = process.env.PORT;
+const { Category } = db;
 
 // this lets us parse 'application/json' content in http requests
 app.use(express.json());
@@ -40,11 +42,31 @@ if (process.env.NODE_ENV === "production") {
 
 // update DB tables based on model updates. Does not handle renaming tables/columns
 // NOTE: toggling this to true drops all tables (including data)
-db.sequelize.sync({ force: true });
+db.sequelize.sync({ force: false });
 
 // start up the server
 if (PORT) {
   app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+  addCategories();
 } else {
   console.log("===== ERROR ====\nCREATE A .env FILE!\n===== /ERROR ====");
 }
+
+async function addCategories(){
+  const result = await (Category.findAll({
+    attributes: ['type']
+  }))
+  if (result.length < 5) {
+      Category.destroy({
+        where: {},
+        truncate: true
+      });
+      Category.create({type: 'Museums & Art Institutions'});
+      Category.create({type: 'Parks & Public Spaces'});
+      Category.create({type: 'Concerts & Shows'});
+      Category.create({type: 'Attractions & Tours'});
+      Category.create({type:'Free Events'});
+      return;
+  }
+}
+

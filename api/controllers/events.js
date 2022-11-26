@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 // post a new event
 router.post("/", (req, res) => {
   let { title, description, address, date, price, link } = req.body;
-
+  console.log(req.user);
   Event.create({ title, description, address, date, price, link })
     .then((newEvent) => {
       res.status(201).json(newEvent);
