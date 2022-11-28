@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     // associations can be defined here
     // models.User.belongsTo(models.Category);
-    // models.User.belongsToMany(models.Event, { through: "UserEvents" });
+    User.Event = models.User.belongsToMany(models.Event, { through: "UserEvents" });
   };
 
   User.beforeSave((user, options) => {
