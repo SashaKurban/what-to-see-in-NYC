@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const passport = require("../middlewares/authentication");
 const db = require("../models");
-const { Event } = db;
+const { Event, Category } = db;
+
 
 // get all events
 router.get("/", (req, res) => {
@@ -17,13 +18,18 @@ router.get("/my-events", passport.isAuthenticated(), (req, res) => {
 
 
 // post a new event
-router.post("/", passport.isAuthenticated(), (req, res) => {
-  let { title, description, address, date, price, link} = req.body;
+router.post("/", passport.isAuthenticated(),  async (req, res) => {
+  let { title, description, address, date, price, link, type} = req.body;
   let userId = (req.user).id;
-  Event.create({ title, description, address, date, price, link, UserId: userId})
+  let category = await Category.findOne({
+    where:{
+      type: type,
+    }
+  })
+  Event.create({ title, description, address, date, price, link, UserId: userId, CategoryId: category.id})
     .then((newEvent) => {
       (req.user).addEvent(newEvent);
-      res.status(201).json(newEvent);
+      res.status(201).json(category + type);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -71,5 +77,4 @@ router.delete("/:id", passport.isAuthenticated(), (req, res) => {
     res.sendStatus(204);
   });
 });
-
 module.exports = router;
