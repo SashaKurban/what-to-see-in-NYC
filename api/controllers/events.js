@@ -4,7 +4,6 @@ const passport = require("../middlewares/authentication");
 const db = require("../models");
 const { Event, Category } = db;
 
-
 // get all events
 router.get("/", (req, res) => {
     Event.findAll({}).then((allEvents) => res.json(allEvents));
@@ -37,9 +36,14 @@ router.post("/", passport.isAuthenticated(),  async (req, res) => {
 });
 
 // update event
-router.put("/:id", passport.isAuthenticated(), (req, res) => {
-    let { title, description, address, date, price, link } = req.body;
+router.put("/:id", passport.isAuthenticated(), async (req, res) => {
+    let { title, description, address, date, price, link, type } = req.body;
     const { id } = req.params;
+    let category = await Category.findOne({
+      where:{
+        type: type,
+      }
+    })
     Event.findByPk(id).then((event) => {
       if (!event) {
         return res.sendStatus(404);
@@ -52,7 +56,7 @@ router.put("/:id", passport.isAuthenticated(), (req, res) => {
       event.date = date;
       event.price = price;
       event.link = link;
-
+      event.CategoryId = category.id;
       event
         .save()
         .then((updatedEvent) => {

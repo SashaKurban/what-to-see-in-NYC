@@ -25,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
   Category.associate = (models) => {
     // associations can be defined here
     models.Category.belongsToMany(models.Event, { through: "CategoryEvents" });
-    // models.Category.belongsToMany(models.User, { through: "CategoryUsers" });
   };
 
   return Category;
