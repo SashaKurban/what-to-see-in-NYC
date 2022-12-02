@@ -15,6 +15,16 @@ router.get("/my-events", passport.isAuthenticated(), (req, res) => {
   user.getEvents().then((allEvents) => res.json(allEvents));
 });
 
+//get events by date 
+router.get("/:date", (req, res) => {
+  const {date}  = req.params;
+  Event.findAll({
+    where:{
+      date: date,
+    }
+  }).then((allEvents) => res.json(allEvents));
+});
+
 //get all events belonging to a category type
 router.get("/:type", async (req, res) => {
   const {type}  = req.params;
