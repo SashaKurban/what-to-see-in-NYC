@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import PostFormPage from "./pages/PostFormPage";
-import ShowPostPage from "./pages/ShowPostPage";
 import LoginPage from "./pages/LoginPage";
 
 import HomePage from "./pages/HomePage";
@@ -14,6 +12,9 @@ import MuseumsPage from "./pages/MuseumsPage";
 // import DropdownButton from 'react-bootstrap/DropdownButton';
 // import Nav from "./pages/Nav";
 
+import UserProfile from "./pages/UserProfile";
+import CreateEvent from "./pages/CreateEvent";
+
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -21,21 +22,28 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
+
+
 import "./App.css";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 
 
 function Navigation(props) {
   return (
-        
-    <Navbar className= "color-nav">
+
+    <Navbar className="color-nav">
       <Container>
         <Navbar.Brand href="#home" className="text-white">Logo</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className=" ms-auto ">
-   
-        
+
+          <NavLink className="nav-link" to="/">
+              Home
+            </NavLink>
+
+
             <NavDropdown title="Categories" id="basic-nav-dropdown">
               <NavDropdown.Item href="/museums">MUSEUMS and ART INSTITUTIONS</NavDropdown.Item>
               <NavDropdown.Item href="/parks">PARKS and PUBLIC SPACE</NavDropdown.Item>
@@ -43,13 +51,12 @@ function Navigation(props) {
             </NavDropdown>
 
             <NavLink className="nav-link text-white" to="/log-in">
-            Login
+              Login
             </NavLink>
 
-
-
-            
-
+            <NavLink className="nav-link" to="/user-profile">
+              User Profile
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -59,24 +66,26 @@ function Navigation(props) {
 }
 
 function App() {
- 
+
   return (
     <BrowserRouter>
       <Navigation />
-    
-         
-          <Routes>
-    
-            <Route path="/shows" element={<showsPage />} />
-            {/* <Route path="/parks" element={<ParksPage />} /> */}
-            <Route path="/museums" element={<MuseumsPage />} />
-            <Route path="/log-in" element={<LoginPage />} />
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-     
+
+
+      <Routes>
+
+        <Route path="/shows" element={<showsPage />} />
+        {/* <Route path="/parks" element={<ParksPage />} /> */}
+        <Route path="/museums" element={<MuseumsPage />} />
+        <Route path="/log-in" element={<LoginPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/create-event" element={<CreateEvent />} />
+      </Routes>
+
     </BrowserRouter>
 
-    
+
   );
 }
 

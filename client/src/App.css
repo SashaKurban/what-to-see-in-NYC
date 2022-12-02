@@ -55,4 +55,16 @@
     color: white;
 }
 
- 
+ .profileHeader {
+    text-align: left;
+}
+
+.profileImage {
+    width: 400px;
+    border-radius: 50%;
+}
+
+.slideshowImage {
+    width: 640px; 
+    height:360px;
+}

@@ -1,48 +1,68 @@
 import React from "react";
+import CardTemplate from "../components/CardTemplate";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function HomePage(props) {
   return (
-    <>
-      <div className="col text-center">
-        <h2 className="mb-3">About our project</h2>
-        <p className="mb-5">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-          quidem adipisci nobis quia eum quaerat quos ducimus, deleniti
-          exercitationem animi itaque iste illo reiciendis vitae atque
-          necessitatibus voluptatum repellendus quisquam?
-        </p>
-        <h2 className="mb-3">About our Team</h2>
-        <div className="row">
-          <div className="col-lg-4">
-            <h3>Firstname Lastname</h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Dignissimos in itaque nihil consectetur qui natus similique
-              nostrum molestias, ipsa explicabo hic impedit aspernatur. Ipsa
-              provident neque culpa alias incidunt amet.
-            </p>
-          </div>
-          <div className="col-lg-4">
-            <h3>Firstname Lastname</h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Dignissimos in itaque nihil consectetur qui natus similique
-              nostrum molestias, ipsa explicabo hic impedit aspernatur. Ipsa
-              provident neque culpa alias incidunt amet.
-            </p>
-          </div>
-          <div className="col-lg-4">
-            <h3>Firstname Lastname</h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Dignissimos in itaque nihil consectetur qui natus similique
-              nostrum molestias, ipsa explicabo hic impedit aspernatur. Ipsa
-              provident neque culpa alias incidunt amet.
-            </p>
-          </div>
-        </div>
-      </div>
-    </>
+    <div>
+      <h1>What to See in NYC</h1>
+      <Container>
+        <h3>MUSEUMS and ART INSTITUTIONS</h3>
+        <Row>
+          <Col>
+            <CardTemplate eventName="Art Exhibit" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+          <Col>
+            <CardTemplate eventName="Music Day" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+          <Col>
+            <CardTemplate eventName="Movie Showing" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+        </Row>
+
+        <br/>
+        <h3>PARKS and PUBLIC SPACES</h3>
+
+        <Row>
+          <Col>
+            <CardTemplate eventName="Art Exhibit" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+          <Col>
+            <CardTemplate eventName="Music Day" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+          <Col>
+            <CardTemplate eventName="Movie Showing" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+        </Row>
+
+        <br />
+
+        <h3>SHOWS and CONCERTS</h3>
+
+        <Row>
+          <Col>
+            <CardTemplate eventName="Art Exhibit" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+          <Col>
+            <CardTemplate eventName="Music Day" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+          <Col>
+            <CardTemplate eventName="Movie Showing" eventDescription="Morbi dictum maximus arcu, pretium pellentesque justo rhoncus sit amet. Nullam imperdiet nulla sit amet mauris gravida, in ultrices est iaculis. Donec facilisis mauris et tempus fermentum." eventRegistrationLink="https://www.eventbrite.com/" />
+          </Col>
+
+        </Row>
+      </Container>
+    </div>
   );
 }
 
