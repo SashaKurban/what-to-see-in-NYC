@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("../middlewares/authentication");
 const db = require("../models");
-const { Event } = db;
+const { Event, Category } = db;
 
 // get all events
 router.get("/", (req, res) => {
@@ -15,12 +15,42 @@ router.get("/my-events", passport.isAuthenticated(), (req, res) => {
   user.getEvents().then((allEvents) => res.json(allEvents));
 });
 
+//get events by date 
+router.get("/:date", (req, res) => {
+  const {date}  = req.params;
+  Event.findAll({
+    where:{
+      date: date,
+    }
+  }).then((allEvents) => res.json(allEvents));
+});
+
+//get all events belonging to a category type
+router.get("/:type", async (req, res) => {
+  const {type}  = req.params;
+  let category = await Category.findOne({
+    where:{
+      type: type,
+    }
+  });
+  Event.findAll({
+    where:{
+      categoryId: category.id,
+    }
+  }) .then((allEvents) => res.json(allEvents));
+});
+
 
 // post a new event
-router.post("/", passport.isAuthenticated(), (req, res) => {
-  let { title, description, address, date, price, link} = req.body;
+router.post("/", passport.isAuthenticated(),  async (req, res) => {
+  let { title, description, address, date, price, link, type} = req.body;
   let userId = (req.user).id;
-  Event.create({ title, description, address, date, price, link, UserId: userId})
+  let category = await Category.findOne({
+    where:{
+      type: type,
+    }
+  })
+  Event.create({ title, description, address, date, price, link, UserId: userId, CategoryId: category.id})
     .then((newEvent) => {
       (req.user).addEvent(newEvent);
       res.status(201).json(newEvent);
@@ -31,9 +61,14 @@ router.post("/", passport.isAuthenticated(), (req, res) => {
 });
 
 // update event
-router.put("/:id", passport.isAuthenticated(), (req, res) => {
-    let { title, description, address, date, price, link } = req.body;
+router.put("/:id", passport.isAuthenticated(), async (req, res) => {
+    let { title, description, address, date, price, link, type } = req.body;
     const { id } = req.params;
+    let category = await Category.findOne({
+      where:{
+        type: type,
+      }
+    })
     Event.findByPk(id).then((event) => {
       if (!event) {
         return res.sendStatus(404);
@@ -46,7 +81,7 @@ router.put("/:id", passport.isAuthenticated(), (req, res) => {
       event.date = date;
       event.price = price;
       event.link = link;
-
+      event.CategoryId = category.id;
       event
         .save()
         .then((updatedEvent) => {
@@ -71,5 +106,4 @@ router.delete("/:id", passport.isAuthenticated(), (req, res) => {
     res.sendStatus(204);
   });
 });
-
 module.exports = router;
