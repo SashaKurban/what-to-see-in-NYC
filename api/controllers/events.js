@@ -15,6 +15,21 @@ router.get("/my-events", passport.isAuthenticated(), (req, res) => {
   user.getEvents().then((allEvents) => res.json(allEvents));
 });
 
+//get all events belonging to a category type
+router.get("/:type", async (req, res) => {
+  const {type}  = req.params;
+  let category = await Category.findOne({
+    where:{
+      type: type,
+    }
+  });
+  Event.findAll({
+    where:{
+      categoryId: category.id,
+    }
+  }) .then((allEvents) => res.json(allEvents));
+});
+
 
 // post a new event
 router.post("/", passport.isAuthenticated(),  async (req, res) => {
@@ -28,7 +43,7 @@ router.post("/", passport.isAuthenticated(),  async (req, res) => {
   Event.create({ title, description, address, date, price, link, UserId: userId, CategoryId: category.id})
     .then((newEvent) => {
       (req.user).addEvent(newEvent);
-      res.status(201).json(category + type);
+      res.status(201).json(newEvent);
     })
     .catch((err) => {
       res.status(400).json(err);
