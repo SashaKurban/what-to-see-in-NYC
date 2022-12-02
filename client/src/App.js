@@ -1,61 +1,91 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import PostsListPage from "./pages/PostsListPage";
-import PostFormPage from "./pages/PostFormPage";
-import ShowPostPage from "./pages/ShowPostPage";
-import AboutUsPage from "./pages/AboutUsPage";
+import LoginPage from "./pages/LoginPage";
+
 import HomePage from "./pages/HomePage";
+
+import "bootstrap/dist/css/bootstrap.min.css"
+
+import MuseumsPage from "./pages/MuseumsPage";
+// import ParksPage from "./pages/ParksPage";
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
+// import Nav from "./pages/Nav";
+
 import UserProfile from "./pages/UserProfile";
 import CreateEvent from "./pages/CreateEvent";
 
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+
+
+
+
 import "./App.css";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
+
+
 
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          HomePage
-        </Link>
-        <ul className="navbar-nav me-auto">
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/posts/new">
-              Create a Micro Post
+
+    <Navbar className="color-nav">
+      <Container>
+        <Navbar.Brand href="#home" className="text-white">Logo</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className=" ms-auto ">
+
+          <NavLink className="nav-link" to="/">
+              Home
             </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/about-us">
-              About Us
+
+
+            <NavDropdown title="Categories" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/museums">MUSEUMS and ART INSTITUTIONS</NavDropdown.Item>
+              <NavDropdown.Item href="/parks">PARKS and PUBLIC SPACE</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">SHOWS and CONCERTS</NavDropdown.Item>
+            </NavDropdown>
+
+            <NavLink className="nav-link text-white" to="/log-in">
+              Login
             </NavLink>
-          </li>
-          <li className="nav-item">
+
             <NavLink className="nav-link" to="/user-profile">
               User Profile
             </NavLink>
-          </li>
-        </ul>
-      </div>
-    </nav>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
   );
 }
 
 function App() {
+
   return (
     <BrowserRouter>
       <Navigation />
-      <div className="container-xl text-center">
-        <div className="row justify-content-center">
-          <Routes>
-          <Route path="/" element={<HomePage />} />
-            <Route path="/posts/new" element={<PostFormPage />} />
-            <Route path="/posts/:id" element={<ShowPostPage />} />
-            <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/user-profile" element={<UserProfile />} />
-            <Route path="/create-event" element={<CreateEvent />} />
-          </Routes>
-        </div>
-      </div>
+
+
+      <Routes>
+
+        <Route path="/shows" element={<showsPage />} />
+        {/* <Route path="/parks" element={<ParksPage />} /> */}
+        <Route path="/museums" element={<MuseumsPage />} />
+        <Route path="/log-in" element={<LoginPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/create-event" element={<CreateEvent />} />
+      </Routes>
+
     </BrowserRouter>
+
+
   );
 }
 

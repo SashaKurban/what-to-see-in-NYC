@@ -1,6 +1,6 @@
 import React from "react";
 
-function AboutUsPage(props) {
+function ParksPage(props) {
   return (
     <>
       <div className="col text-center">
@@ -46,4 +46,4 @@ function AboutUsPage(props) {
   );
 }
 
-export default AboutUsPage;
+export default ParksPage;
