@@ -28,21 +28,21 @@ import "./App.css";
 function Navigation(props) {
   return (
         
-    <Navbar bg="dark" variant="dark">
+    <Navbar className= "color-nav">
       <Container>
-        <Navbar.Brand href="#home">Logo</Navbar.Brand>
+        <Navbar.Brand href="#home" className="text-white">Logo</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className=" ms-auto">
+          <Nav className=" ms-auto ">
    
-            {/* <Nav.Link href="#link"> Categories</Nav.Link> */}
+        
             <NavDropdown title="Categories" id="basic-nav-dropdown">
               <NavDropdown.Item href="/museums">MUSEUMS and ART INSTITUTIONS</NavDropdown.Item>
               <NavDropdown.Item href="/parks">PARKS and PUBLIC SPACE</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">SHOWS and CONCERTS</NavDropdown.Item>
             </NavDropdown>
 
-            <NavLink className="nav-link" to="/log-in">
+            <NavLink className="nav-link text-white" to="/log-in">
             Login
             </NavLink>
 
@@ -63,8 +63,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation />
-     
- 
+    
          
           <Routes>
     

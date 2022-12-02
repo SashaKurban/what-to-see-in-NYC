@@ -13,10 +13,10 @@ function  LoginPage(props) {
       <div className="Auth-form-container">
         <form className="Auth-form">
           <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Sign In</h3>
-            <div className="text-center">
+            <h3 className="Auth-form-title">Login</h3>
+            <div className="text-center text-white">
               Not registered yet?{" "}
-              <span className="link-primary" onClick={changeAuthMode}>
+              <span className="link-primary " onClick={changeAuthMode}>
                 Sign Up
               </span>
             </div>
@@ -37,11 +37,11 @@ function  LoginPage(props) {
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn text-white">
                 Submit
               </button>
             </div>
-            <p className="text-center mt-2">
+            <p className="text-center mt-2 text-white">
               Forgot <a href="#">password?</a>
             </p>
           </div>
@@ -54,11 +54,11 @@ function  LoginPage(props) {
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Sign In</h3>
-          <div className="text-center">
+          <h3 className="Auth-form-title">Sign up</h3>
+          <div className="text-center text-white">
             Already registered?{" "}
             <span className="link-primary" onClick={changeAuthMode}>
-              Sign In
+              Login
             </span>
           </div>
           <div className="form-group mt-3">
@@ -86,11 +86,11 @@ function  LoginPage(props) {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn text-white" >
               Submit
             </button>
           </div>
-          <p className="text-center mt-2">
+          <p className="text-center mt-2 text-white">
             Forgot <a href="#">password?</a>
           </p>
         </div>
@@ -99,26 +99,6 @@ function  LoginPage(props) {
   )
 }
 export default LoginPage;
-//   return (
- 
 
-// <div className="App">
-       
-       
-//         <div className="auth-wrapper">
-//           <div className="auth-inner">
-//             <Routes>
-//               {/* <Route path="/log-in" element={<Login />} />
-//               {/* <Route path="/log-in" element={<Login />} /> */}
-//               {/* <Route exact path="/sign-up" element={<Signup />} /> */}
-//             </Routes>
-//           </div>
-//         </div>
-//       </div>
-    
-//     )
-// }
-
-// 
 
 

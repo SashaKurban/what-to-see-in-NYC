@@ -18,7 +18,7 @@
     padding-top: 30px;
     padding-bottom: 20px;
     border-radius: 8px;
-    background-color: white;
+    background-color: #4A4E69;
   }
   
   .Auth-form-content {
@@ -30,12 +30,29 @@
     text-align: center;
     margin-bottom: 1em;
     font-size: 24px;
-    color: rgb(34, 34, 34);
+    color: white;
     font-weight: 800;
   }
   
   label {
     font-size: 14px;
     font-weight: 600;
-    color: rgb(34, 34, 34);
+    color: white;
   }
+
+  button{
+
+    background-color:#C9ADA7 !important;
+  }
+
+
+  .color-nav{
+    background-color: #22223B;
+   
+  }
+.NavDropdown {
+    background-color: white;
+    color: white;
+}
+
+ 
