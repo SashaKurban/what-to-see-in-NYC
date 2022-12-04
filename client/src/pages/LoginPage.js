@@ -45,20 +45,22 @@ function  LoginPage(props) {
       setError(true);
     }
   };
-  if (success) return <Navigate to="/" />;
+  
 
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
       await auth.authenticate(email, password);
       console.log("logged in");
-      return <Navigate to="/" />;
+      setSuccess(true);
+      
     } catch (error) {
       console.error("Server error while loging in", error);
       setError(true);
     }
+    
   };
-  
+  if (success) return <Navigate to="/user-profile" />;
 
   if (authMode === "signin") {
     return (
