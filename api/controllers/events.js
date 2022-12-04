@@ -16,14 +16,14 @@ router.get("/my-events", passport.isAuthenticated(), (req, res) => {
 });
 
 //get events by date 
-router.get("/:date", (req, res) => {
-  const {date}  = req.params;
-  Event.findAll({
-    where:{
-      date: date,
-    }
-  }).then((allEvents) => res.json(allEvents));
-});
+// router.get("/:date", (req, res) => {
+//   const {date}  = req.params;
+//   Event.findAll({
+//     where:{
+//       date: date,
+//     }
+//   }).then((allEvents) => res.json(allEvents));
+// });
 
 //get all events belonging to a category type
 router.get("/:type", async (req, res) => {
@@ -35,9 +35,9 @@ router.get("/:type", async (req, res) => {
   });
   Event.findAll({
     where:{
-      categoryId: category.id,
+      CategoryId: category.id,
     }
-  }) .then((allEvents) => res.json(allEvents));
+  }).then((allEvents) => res.json(allEvents));
 });
 
 

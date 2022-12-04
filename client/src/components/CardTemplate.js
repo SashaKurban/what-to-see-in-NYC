@@ -7,12 +7,13 @@ function CardTemplate(props) {
     <div>
       <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{props.eventName}</Card.Title>
-        <Card.Text>
-          {props.eventDescription}
-        </Card.Text>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Text>{props.date}</Card.Text>
+        <Card.Text>{props.description}</Card.Text>
         {/* <Button variant="primary">{props.eventRegistrationLink}</Button> */}
-        <Card.Link href={props.eventRegistrationLink}>Register</Card.Link>
+        <Card.Text>{props.price}</Card.Text>
+        <Card.Text>{props.address}</Card.Text>
+        <Card.Link href={props.link}>Register</Card.Link>
       </Card.Body>
     </Card>
     </div>
