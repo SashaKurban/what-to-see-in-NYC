@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Carousel from 'react-bootstrap/Carousel';
+import ProfileCard from "../components/ProfileCard";
 
 function UserProfile() {
     return (
@@ -17,20 +17,11 @@ function UserProfile() {
             <Container>
                 <Row>
                     <Col>
-                        <Image className="profileImage" src="https://cdn.getyourguide.com/img/location/5729b6e6707a3.jpeg/99.jpg" />
+                        <Image className="profileImage" src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80" />
                     </Col>
                     <Col>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Body>
-                                <Card.Title>Organization: Natural Museum of History</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">Representative: Jane Doe</Card.Subtitle>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.
-                                </Card.Text>
-                                <Card.Link href="#">Edit</Card.Link>
-                            </Card.Body>
-                        </Card>
+                        {/* ProfileCard */}
+                        <ProfileCard name="Joe Museum" email="joe@gmail.com" bio="I am joe" />
                     </Col>
                     <Col>
                         <Row>
@@ -49,45 +40,12 @@ function UserProfile() {
             <br /> <br />
             <h2 className="profileHeader">Upcoming Events</h2>
             <Container>
-                <Carousel>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100 slideshowImage"
-                            src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                            alt="First slide"
-                        />
-                        <Carousel.Caption>
-                            <h3>Event 1</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100 slideshowImage"
-                            src="https://images.unsplash.com/photo-1496889196885-5ddcec5eef4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                            alt="Second slide"
-                        />
 
-                        <Carousel.Caption>
-                            <h3>Event 2</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100 slideshowImage"
-                            src="https://images.unsplash.com/photo-1564399579883-451a5d44ec08?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1037&q=80"
-                            alt="Third slide"
-                        />
-
-                        <Carousel.Caption>
-                            <h3>Event 3</h3>
-                            <p>
-                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                            </p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
+                <Row>
+                    <Col>
+                        <CardTemplate eventName="Museum" eventDescription="hello" eventRegistrationLink="#" />
+                    </Col>
+                </Row>
             </Container>
 
             <br /><br />
@@ -95,8 +53,17 @@ function UserProfile() {
     );
 }
 
-function createNewEvent() {
-
-}
+// function displayUpcomingEvents(props) {
+//     const events = props.events;
+//     const listOfEvents = events.map((event) =>
+//         <Col>
+//             {/* <CardTemplate eventName="Museum" eventDescription="hello" eventRegistrationLink="#" /> */}
+//             <li>{event}</li>
+//         </Col>
+//     );
+//     return (
+//         <ul>{listItems}</ul>
+//     );
+// }
 
 export default UserProfile;

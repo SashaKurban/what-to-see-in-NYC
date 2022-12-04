@@ -14,6 +14,8 @@ import MuseumsPage from "./pages/MuseumsPage";
 
 import UserProfile from "./pages/UserProfile";
 import CreateEvent from "./pages/CreateEvent";
+import ProfileCard from "./components/ProfileCard";
+import EditProfile from "./pages/EditProfile";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -81,6 +83,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
       </Routes>
 
     </BrowserRouter>
