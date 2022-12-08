@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 
 import HomePage from "./pages/HomePage";
@@ -21,7 +21,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
-
+import "./loginstyle.css";
 
 
 import "./App.css";
@@ -34,17 +34,17 @@ function Navigation(props) {
 
     <Navbar className="color-nav">
       <Container>
-        <Navbar.Brand href="#home" className="text-white">Logo</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className=" ms-auto ">
+        <Navbar.Brand href="#home" className="text-primary">Logo</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav " />
+        <Navbar.Collapse id="basic-navbar-nav" className="text-primary">
+          <Nav className=" ms-auto text-primary ">
 
           <NavLink className="nav-link" to="/">
               Home
             </NavLink>
 
 
-            <NavDropdown title="Categories" id="basic-nav-dropdown">
+            <NavDropdown title="Categories" id="basic-nav-dropdown ">
               <NavDropdown.Item href="/museums">MUSEUMS and ART INSTITUTIONS</NavDropdown.Item>
               <NavDropdown.Item href="/parks">PARKS and PUBLIC SPACE</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">SHOWS and CONCERTS</NavDropdown.Item>
