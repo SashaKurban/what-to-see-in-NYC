@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
@@ -20,18 +20,15 @@ import EditProfile from "./pages/EditProfile";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
-
-
-
-
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Navigate } from "react-router-dom";
 import "./App.css";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 
 
 function Navigation(props) {
+
   return (
 
     <Navbar className="color-nav">
@@ -55,7 +52,6 @@ function Navigation(props) {
             <NavLink className="nav-link text-white" to="/log-in">
               Login
             </NavLink>
-
             <NavLink className="nav-link" to="/user-profile">
               User Profile
             </NavLink>
