@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
-
+import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./pages/HomePage";
 
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -35,7 +35,7 @@ function Navigation(props) {
   return (
 
     <Navbar className="color-nav">
-      <Container>
+      <Container >
         <Navbar.Brand href="#home" className="text-white">Logo</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -70,24 +70,21 @@ function Navigation(props) {
 function App() {
 
   return (
-    <BrowserRouter>
-      <Navigation />
+    <AuthProvider>
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path="/shows" element={<showsPage />} />
+          {/* <Route path="/parks" element={<ParksPage />} /> */}
+          <Route path="/museums" element={<MuseumsPage />} />
+          <Route path="/log-in" element={<LoginPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+        </Routes>
 
-
-      <Routes>
-
-        <Route path="/shows" element={<showsPage />} />
-        {/* <Route path="/parks" element={<ParksPage />} /> */}
-        <Route path="/museums" element={<MuseumsPage />} />
-        <Route path="/log-in" element={<LoginPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/user-profile" element={<UserProfile />} />
-        <Route path="/create-event" element={<CreateEvent />} />
-        <Route path="/edit-profile" element={<EditProfile />} />
-      </Routes>
-
-    </BrowserRouter>
-
+      </BrowserRouter>
+    </AuthProvider>
 
   );
 }
