@@ -59,7 +59,6 @@ async function addCategories(){
   if (result.length < 5) {
       Category.destroy({
         where: {},
-        truncate: true
       });
       Category.create({type: 'Museums & Art Institutions'});
       Category.create({type: 'Parks & Public Spaces'});

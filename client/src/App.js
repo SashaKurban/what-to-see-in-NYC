@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
-
+import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./pages/HomePage";
 
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -14,30 +14,29 @@ import MuseumsPage from "./pages/MuseumsPage";
 
 import UserProfile from "./pages/UserProfile";
 import CreateEvent from "./pages/CreateEvent";
+import ProfileCard from "./components/ProfileCard";
+import EditProfile from "./pages/EditProfile";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
-
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Navigate } from "react-router-dom";
+import "./App.css";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import "./loginstyle.css";
 
 
-import "./App.css";
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
-
-
-
 function Navigation(props) {
+
   return (
 
     <Navbar className="color-nav">
-      <Container>
-        <Navbar.Brand href="#home" className="text-primary">Logo</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav " />
-        <Navbar.Collapse id="basic-navbar-nav" className="text-primary">
-          <Nav className=" ms-auto text-primary ">
+      <Container >
+        <Navbar.Brand href="#home" className="text-white">Logo</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className=" ms-auto ">
 
           <NavLink className="nav-link" to="/">
               Home
@@ -53,7 +52,6 @@ function Navigation(props) {
             <NavLink className="nav-link text-white" to="/log-in">
               Login
             </NavLink>
-
             <NavLink className="nav-link" to="/user-profile">
               User Profile
             </NavLink>
@@ -68,23 +66,21 @@ function Navigation(props) {
 function App() {
 
   return (
-    <BrowserRouter>
-      <Navigation />
+    <AuthProvider>
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path="/shows" element={<showsPage />} />
+          {/* <Route path="/parks" element={<ParksPage />} /> */}
+          <Route path="/museums" element={<MuseumsPage />} />
+          <Route path="/log-in" element={<LoginPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+        </Routes>
 
-
-      <Routes>
-
-        <Route path="/shows" element={<showsPage />} />
-        {/* <Route path="/parks" element={<ParksPage />} /> */}
-        <Route path="/museums" element={<MuseumsPage />} />
-        <Route path="/log-in" element={<LoginPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/user-profile" element={<UserProfile />} />
-        <Route path="/create-event" element={<CreateEvent />} />
-      </Routes>
-
-    </BrowserRouter>
-
+      </BrowserRouter>
+    </AuthProvider>
 
   );
 }

@@ -3,9 +3,9 @@ const { User } = require("../models");
 const passport = require("../middlewares/authentication");
 
 router.post("/signup", (req, res) => {
-  let { username, email, bio, password } = req.body;
+  let { username, email, bio, password} = req.body;
   console.log("POST body: ", req.body);
-  User.create({username, email, bio, password})
+  User.create({username, email, bio, password, })
     .then((user) => {
       user.password = undefined;
       req.login(user, () => res.status(201).json(user));
