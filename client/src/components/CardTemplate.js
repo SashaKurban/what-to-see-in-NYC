@@ -14,7 +14,7 @@ function CardTemplate(props) {
         {/* <Button variant="primary">{props.eventRegistrationLink}</Button> */}
         <Card.Text>Price: ${props.price}</Card.Text>
         <Card.Text>Address: {props.address}</Card.Text>
-        <Card.Link href={props.link} className="link-color">Register</Card.Link>
+        <Card.Link href={props.link} target="_blank" className="link-color">Register</Card.Link>
       </Card.Body>
     </Card>
     </div>

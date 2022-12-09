@@ -16,7 +16,7 @@ export default function CreateEvent() {
     const[price, setPrice] = useState();
     const[link, setLink] = useState();
     const[address, setAddress] = useState();
-    const[type, setType] = useState();
+    const[type, setType] = useState('Museums & Art Institutions');
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -70,7 +70,7 @@ export default function CreateEvent() {
                     value={type}
                     onChange={(e) => setType(e.target.value)}>
                         <option >Museums & Art Institutions</option>
-                        <option>Shows & Concerts</option>
+                        <option>Concerts & Shows</option>
                         <option>Parks & Public Spaces</option>
                         <option>Free Events</option>
                         <option>Attractions & Tours</option>
