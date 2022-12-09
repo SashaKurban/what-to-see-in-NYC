@@ -19,6 +19,7 @@
     padding-bottom: 20px;
     border-radius: 8px;
     background-color: #4A4E69;
+    font-family: 'Inter';
   }
   
   .Auth-form-content {
@@ -54,18 +55,4 @@
 .NavDropdown {
     background-color: white;
     color: white;
-}
-
- .profileHeader {
-    text-align: left;
-}
-
-.profileImage {
-    width: 400px;
-    border-radius: 50%;
-}
-
-.slideshowImage {
-    width: 640px; 
-    height:360px;
 }

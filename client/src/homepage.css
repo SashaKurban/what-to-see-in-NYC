@@ -1,0 +1,17 @@
+.color-nav{
+    font-family: 'Inter';
+    font-size: 18px;
+  }
+
+
+
+.locations-place{
+    margin-left:4%;
+    margin-top: 5%;
+    color:#C9ADA7!important;
+    text-shadow: 1px 1px #ffffff, -1px -1px #0e0d0d !important;
+}
+
+.navbarcolor{
+    color:#C9ADA7!important;
+}

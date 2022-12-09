@@ -1,19 +1,20 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import "../card.css"
 
 function CardTemplate(props) {
   return (
-    <div>
+    <div className="cardStyle">
       <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
-        <Card.Text>{props.date}</Card.Text>
-        <Card.Text>{props.description}</Card.Text>
+      <Card.Body className="lowerCard">
+        <Card.Title>Title: {props.title}</Card.Title>
+        <Card.Text>Date: {props.date}</Card.Text>
+        <Card.Text>Description: {props.description}</Card.Text>
         {/* <Button variant="primary">{props.eventRegistrationLink}</Button> */}
-        <Card.Text>{props.price}</Card.Text>
-        <Card.Text>{props.address}</Card.Text>
-        <Card.Link href={props.link}>Register</Card.Link>
+        <Card.Text>Price: ${props.price}</Card.Text>
+        <Card.Text>Address: {props.address}</Card.Text>
+        <Card.Link href={props.link} className="link-color">Register</Card.Link>
       </Card.Body>
     </Card>
     </div>

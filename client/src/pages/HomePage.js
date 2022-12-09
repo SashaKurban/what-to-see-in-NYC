@@ -3,6 +3,8 @@ import CardTemplate from "../components/CardTemplate";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function HomePage(props) {
   const[museums, setMuseums] = useState();
@@ -88,9 +90,12 @@ function HomePage(props) {
 
   return (
     <div>
-      <h1>What to See in NYC</h1>
+      
+     
+      {/* <h1>What to See in NYC</h1> */}
       <Container>
-        <h3>MUSEUMS and ART INSTITUTIONS</h3>
+        
+        <h3 className="locations-place">MUSEUMS and ART INSTITUTIONS</h3>
         {museums && (
           <div>
           {museums.map((event) => (
@@ -100,7 +105,7 @@ function HomePage(props) {
         </div>
         )}
         <br/>
-        <h3>PARKS and PUBLIC SPACES</h3>
+        <h3 className="locations-place">PARKS and PUBLIC SPACES</h3>
         {parks && (
           <div>
           {parks.map((event) => (
@@ -110,7 +115,7 @@ function HomePage(props) {
         </div>
         )}
         <br />
-        <h3>SHOWS and CONCERTS</h3>
+        <h3 className="locations-place">SHOWS and CONCERTS</h3>
         {concerts && (
           <div>
           {concerts.map((event) => (
@@ -120,25 +125,32 @@ function HomePage(props) {
         </div>
         )}
         <br />
-        <h3>FREE EVENTS</h3>
+        <h3 className="locations-place">FREE EVENTS</h3>
+        
+        
         {free && (
           <div>
+      
           {free.map((event) => (
             <CardTemplate key={event.id} {...event}/>
           ))
           }
         </div>
         )}
+
         <br />
-        <h3>ATTRACTIONS and TOURS</h3>
+        <h3 className="locations-place">ATTRACTIONS and TOURS</h3>
         {tours && (
           <div>
           {tours.map((event) => (
             <CardTemplate key={event.id} {...event}/>
           ))
           }
+             
         </div>
+     
         )}
+          
       </Container>
     </div>
   );

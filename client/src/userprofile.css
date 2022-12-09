@@ -1,0 +1,39 @@
+.title{
+    margin-left:8%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    font-family: 'Inter';
+}
+
+
+.profileHeader {
+    text-align: left;
+}
+
+.profileImage {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-left:10% ;
+}
+
+.slideshowImage {
+    width: 640px; 
+    height:360px;
+}
+
+
+.user-button{
+    color:#4A4E69;
+    background-color: #4A4E69 !important;
+}
+
+
+.user-info{
+    
+    font-family: 'Inter';
+}
+
+.placement-card{
+    margin-right: 30%;
+}
