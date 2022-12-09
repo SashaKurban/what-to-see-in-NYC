@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
-import Button from 'react-bootstrap/Button';
 import ProfileCard from "../components/ProfileCard";
 import "../userprofile.css"
 
@@ -39,8 +38,11 @@ function UserProfile() {
   }, []);
   return (
     <div>
-      {/* <h1>What to See in NYC</h1> */}
-      <h1 className="profileHeader title">Welcome, User!</h1>
+      <div>
+      {user && (
+             <h1>Welcome, {user.username}!</h1>
+            )}
+      </div>
       {/* TODO: Create image upload page*/}
       <Container>
         <Row>
