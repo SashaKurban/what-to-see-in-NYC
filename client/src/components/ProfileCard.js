@@ -1,18 +1,24 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import "../userprofile.css"
 
 function ProfileCard(props) {
     return (
-        <div>
+        <div  className="user-info">
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                    <Card.Title>{props.name}</Card.Title>
-                    <Card.Text>{props.email}</Card.Text>
-                    <Card.Text>{props.bio}</Card.Text>
+                    <Card.Title>Name: {props.name}</Card.Title>
+                    <Card.Text>Email: {props.email}</Card.Text>
+                    <Card.Text>Bio: {props.bio}</Card.Text>
                     <a href="/edit-profile">
-                        <Button variant="outline-primary">Edit Profile</Button>{' '}
+                        <Button className="user-button">Edit Profile</Button>{' '}
                     </a>
+                   
+                    <a href="/create-event">
+                    <Button className= "user-button">Create Event</Button>{' '}
+                    </a>
+                    
                 </Card.Body>
             </Card>
         </div>

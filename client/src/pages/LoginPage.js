@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.js";
+import "../homepage.css"
 
 function  LoginPage(props) {
   const auth = useAuth();
@@ -70,7 +71,7 @@ function  LoginPage(props) {
             <h3 className="Auth-form-title">Login</h3>
             <div className="text-center text-white">
               Not registered yet?{" "}
-              <span className="link-primary " onClick={changeAuthMode}>
+              <span className="navbarcolor " onClick={changeAuthMode}>
                 Sign Up
               </span>
             </div>
@@ -100,7 +101,7 @@ function  LoginPage(props) {
               </button>
             </div>
             <p className="text-center mt-2 text-white">
-              Forgot <a href="#">password?</a>
+              Forgot <a href="#" className= "navbarcolor">password?</a>
             </p>
           </div>
         </form>
@@ -115,7 +116,7 @@ function  LoginPage(props) {
           <h3 className="Auth-form-title">Sign up</h3>
           <div className="text-center text-white">
             Already registered?{" "}
-            <span className="link-primary" onClick={changeAuthMode}>
+            <span className="navbarcolor" onClick={changeAuthMode}>
               Login
             </span>
           </div>
@@ -165,7 +166,7 @@ function  LoginPage(props) {
             </button>
           </div>
           <p className="text-center mt-2 text-white">
-            Forgot <a href="#">password?</a>
+            Forgot <a href="#" className= "navbarcolor">password?</a>
           </p>
         </div>
       </form>

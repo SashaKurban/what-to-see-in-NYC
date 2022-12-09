@@ -1,0 +1,47 @@
+.cardStyle{
+    margin-left:9%;
+    margin-top: 5%;
+    color: aliceblue;
+    font-family: 'Inter';
+
+    
+}
+
+.lowerCard{
+    background-color: #4A4E69;
+    width: 390px;
+
+}
+
+.link-color{
+    color: #C9ADA7;
+}
+
+
+/* Form Page */
+
+.title{
+   text-align: center;
+   margin-right: 4%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    font-family: 'Inter';
+   
+}
+
+
+
+.spacing{
+    margin-left: 30%;
+}
+
+.smaller-input{
+    width: 60% !important;
+}
+
+.color-button{
+    color:#4A4E69;
+    background-color: #4A4E69 !important;
+    float: center;
+    margin-top: 2%;
+}

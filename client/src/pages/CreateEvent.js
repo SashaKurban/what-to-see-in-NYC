@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Navigate } from "react-router-dom";
+import "../card.css"
+
 
 export default function CreateEvent() {
     const [date, setDate] = useState(new Date());
@@ -51,12 +53,12 @@ export default function CreateEvent() {
 
     return (
         <div>
-            <h1>What to See in NYC</h1>
-            <h2>Create a New Event</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+      
+            <h2 className = "title">Create a New Event</h2>
+            <Form className = "spacing" onSubmit={handleSubmit}>
+                <Form.Group  className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Event Title</Form.Label>
-                    <Form.Control type="text" placeholder="Enter event title" 
+                    <Form.Control  className="smaller-input" type="text" placeholder="Enter event title" 
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}/>
                 </Form.Group>
@@ -64,6 +66,7 @@ export default function CreateEvent() {
                     <Form.Label
                     >Select a category</Form.Label>
                     <Form.Select 
+                     className="smaller-input"
                     value={type}
                     onChange={(e) => setType(e.target.value)}>
                         <option >Museums & Art Institutions</option>
@@ -75,13 +78,14 @@ export default function CreateEvent() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmai">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control type="text" placeholder="Enter address" 
+                    <Form.Control  className="smaller-input" type="text" placeholder="Enter address" 
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Label>Date</Form.Label>
                     <Form.Control
+                     className="smaller-input"
                         type="date"
                         name="date"
                         placeholder="Date"
@@ -91,23 +95,23 @@ export default function CreateEvent() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Price</Form.Label>
-                    <Form.Control type="text" placeholder="Enter price" 
+                    <Form.Control  className="smaller-input" type="text" placeholder="Enter price" 
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Registration Link</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a registration link" 
+                    <Form.Control  className="smaller-input" type="text" placeholder="Enter a registration link" 
                     value={link}
                     onChange={(e) => setLink(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Description</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a description" 
+                    <Form.Control  className="smaller-input" type="text" placeholder="Enter a description" 
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className= "color-button" type="submit">
                     Submit
                 </Button>
             </Form>
