@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./pages/HomePage";
-
+import Navigation from "./components/Navigation";
 
 
 import "./homepage.css"
@@ -30,47 +30,6 @@ import "./App.css";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import "./homepage.css";
 
-
-function Navigation(props) {
-
-  return (
-
-    <Navbar className="color-nav">
-      <Container >
-        <Navbar.Brand href="/" className="navbarcolor">What to See in NYC</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className=" ms-auto ">
-
-          <NavLink className="nav-link navbarcolor" to="/">
-              Home
-            </NavLink>
-
-
-            <NavDropdown title={
-        <span className="navbarcolor my-auto">Categories</span>
-    } id="basic-nav-dropdown">
-              <NavDropdown.Item href="/museums">MUSEUMS and ART INSTITUTIONS</NavDropdown.Item>
-              <NavDropdown.Item href="/parks">PARKS and PUBLIC SPACE</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">SHOWS and CONCERTS</NavDropdown.Item>
-            </NavDropdown>
-
-            <NavLink className="nav-link navbarcolor" to="/log-in">
-              Login
-            </NavLink>
-            <NavLink className="nav-link navbarcolor" to="/user-profile">
-              User Profile
-            </NavLink>
-          </Nav>
-        </Navbar.Collapse>
-        
-      </Container>
-    </Navbar>
-
-   
-
-  );
-}
 
 function App() {
 
