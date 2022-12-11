@@ -99,7 +99,7 @@ function HomePage(props) {
         {museums && (
           <div>
           {museums.map((event) => (
-            <CardTemplate key={event.id} {...event}/>
+            <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
           }
         </div>
@@ -109,7 +109,7 @@ function HomePage(props) {
         {parks && (
           <div>
           {parks.map((event) => (
-            <CardTemplate key={event.id} {...event}/>
+            <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
           }
         </div>
@@ -119,7 +119,7 @@ function HomePage(props) {
         {concerts && (
           <div>
           {concerts.map((event) => (
-            <CardTemplate key={event.id} {...event}/>
+            <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
           }
         </div>
@@ -132,7 +132,7 @@ function HomePage(props) {
           <div>
       
           {free.map((event) => (
-            <CardTemplate key={event.id} {...event}/>
+            <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
           }
         </div>
@@ -143,7 +143,7 @@ function HomePage(props) {
         {tours && (
           <div>
           {tours.map((event) => (
-            <CardTemplate key={event.id} {...event}/>
+            <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
           }
              
