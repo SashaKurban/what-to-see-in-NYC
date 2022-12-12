@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import "../card.css"
 
-function CardTemplate(props) {
+function CardTemplate({props, loggedIn}) {
+  const handleDelete = async function(event){
+    event.preventDefault();
+    try{
+      const url = "/api/events/" + props.id;
+      await fetch(url, {method: "DELETE"})
+      .then(() => console.log("deleted event "));
+    }catch(error){
+      console.log(error);
+    }
+  }
+
   return (
     <div className="cardStyle">
       <Card style={{ width: '18rem' }}>
@@ -17,6 +29,15 @@ function CardTemplate(props) {
         <Card.Link href={props.link} target="_blank" className="link-color">Register</Card.Link>
       </Card.Body>
     </Card>
+    {loggedIn && (
+      <div>
+        <Button>
+          <Link className="updateLink" to="/event-form" state={{eventInfo: props}}>Update</Link>
+        </Button>
+        <Button onClick={handleDelete}>Delete</Button>
+        
+      </div>
+    )}
     </div>
     
   );

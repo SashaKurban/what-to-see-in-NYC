@@ -11,13 +11,9 @@ import "./homepage.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import MuseumsPage from "./pages/MuseumsPage";
-// import ParksPage from "./pages/ParksPage";
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
-// import Nav from "./pages/Nav";
 
 import UserProfile from "./pages/UserProfile";
-import CreateEvent from "./pages/CreateEvent";
+import EventForm from "./pages/EventForm";
 import ProfileCard from "./components/ProfileCard";
 import EditProfile from "./pages/EditProfile";
 
@@ -44,7 +40,8 @@ function App() {
           <Route path="/log-in" element={<LoginPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/user-profile" element={<UserProfile />} />
-          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/event-form" element={<EventForm />} />
+          <Route path="/event-form" element={<EventForm />} />
         </Routes>
 
       </BrowserRouter>

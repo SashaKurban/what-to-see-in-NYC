@@ -11,6 +11,7 @@ import "../userprofile.css"
 function UserProfile() {
   const [user, setUser] = useState();
   const [events, setEvents] = useState();
+  
   //fetch data
   useEffect(() => {
     async function getUser() {
@@ -37,6 +38,7 @@ function UserProfile() {
       // clean up function
     };
   }, []);
+
   return (
     <div>
       {/* <h1>What to See in NYC</h1> */}
@@ -53,19 +55,16 @@ function UserProfile() {
               <ProfileCard name={user.username} email={user.email} bio={user.bio} />
             )}
           </Col>
-
-          
         
         </Row>
       </Container>
-
       <br /> <br />
       <h2 className="profileHeader title">Upcoming Events</h2>
       <Container>
         {events && (
           <div>
             {events.map((event) => (
-              <CardTemplate key={event.id} {...event} />
+              <CardTemplate  key={event.id} props={event} loggedIn={true} />
             ))
             }
           </div>

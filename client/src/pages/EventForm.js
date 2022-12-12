@@ -1,5 +1,6 @@
 import { CommandCompleteMessage } from "pg-protocol/dist/messages";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Navigate } from "react-router-dom";
@@ -7,16 +8,21 @@ import "../card.css"
 
 
 export default function CreateEvent() {
-    const [date, setDate] = useState(new Date());
+    const location = useLocation();
+    const eventInfo = location.state ? location.state.eventInfo : null;
+    const [date, setDate] = useState(eventInfo ? eventInfo.date : new Date());
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
 
-    const[title, setTitle] = useState();
-    const[description, setDescription] = useState();
-    const[price, setPrice] = useState();
-    const[link, setLink] = useState();
-    const[address, setAddress] = useState();
+    const[title, setTitle] = useState(eventInfo ? eventInfo.title : "");
+    const[description, setDescription] = useState(eventInfo ?  eventInfo.description : "");
+    const[price, setPrice] = useState(eventInfo ?  eventInfo.price : "");
+    const[link, setLink] = useState(eventInfo ? eventInfo.link : "");
+    const[address, setAddress] = useState(eventInfo ?  eventInfo.address : "");
     const[type, setType] = useState('Museums & Art Institutions');
+
+  
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -49,13 +55,47 @@ export default function CreateEvent() {
         }
     };
 
+    const updateEvent = async (event) => {
+        event.preventDefault();
+        try {
+            console.log(title + " " + price + " " + link + " " +
+            address + " " + description + " " + type + " " + date);
+            let response = await fetch(`/api/events/${eventInfo.id}`, {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                title: title,
+                price: price,
+                address: address,
+                link: link,
+                description: description,
+                date: date,
+                type: type
+            }),
+            });
+            if (response.ok) {
+            setSuccess(true);
+            } else {
+            setError(true);
+            }
+        } catch (error) {
+            console.error("Server error while updating event ", error);
+            setError(true);
+        }
+    };
     if (success) return <Navigate to="/user-profile" />;
 
     return (
         <div>
-      
-            <h2 className = "title">Create a New Event</h2>
-            <Form className = "spacing" onSubmit={handleSubmit}>
+            {eventInfo ? (
+                <h2 className = "title">Update Event Information</h2>
+            ):
+            (<h2 className = "title">Create a New Event</h2>)}
+            
+            <Form className = "spacing" onSubmit={eventInfo ? updateEvent : handleSubmit}>
                 <Form.Group  className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Event Title</Form.Label>
                     <Form.Control  className="smaller-input" type="text" placeholder="Enter event title" 

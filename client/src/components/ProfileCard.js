@@ -15,7 +15,7 @@ function ProfileCard(props) {
                         <Button className="user-button">Edit Profile</Button>{' '}
                     </a>
                    
-                    <a href="/create-event">
+                    <a href="/event-form">
                     <Button className= "user-button">Create Event</Button>{' '}
                     </a>
                     
