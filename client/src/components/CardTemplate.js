@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
@@ -23,7 +23,6 @@ function CardTemplate({props, loggedIn}) {
         <Card.Title>Title: {props.title}</Card.Title>
         <Card.Text>Date: {props.date}</Card.Text>
         <Card.Text>Description: {props.description}</Card.Text>
-        {/* <Button variant="primary">{props.eventRegistrationLink}</Button> */}
         <Card.Text>Price: ${props.price}</Card.Text>
         <Card.Text>Address: {props.address}</Card.Text>
         <Card.Link href={props.link} target="_blank" className="link-color">Register</Card.Link>

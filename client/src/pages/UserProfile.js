@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
-import Button from 'react-bootstrap/Button';
 import ProfileCard from "../components/ProfileCard";
 import "../userprofile.css"
 
@@ -26,24 +25,25 @@ function UserProfile() {
     async function getMyEvents() {
       try {
         let response = await fetch("/api/events/my-events");
-        let data = await response.json();
+        let data = orderAscendingByDate( await response.json());
         setEvents(data);
       } catch (error) {
         console.error("Error fetching all user events", error);
       }
     }
+    function orderAscendingByDate(data){
+      const copyData = []
+      .concat(data)
+      .sort((a, b) => (a.date > b.date ? 1 : -1));
+      return copyData;
+    }
     getUser();
     getMyEvents();
-    return () => {
-      // clean up function
-    };
-  }, []);
+  }, [events]);
 
   return (
     <div>
-      {/* <h1>What to See in NYC</h1> */}
       <h1 className="profileHeader title">Welcome, User!</h1>
-      {/* TODO: Create image upload page*/}
       <Container>
         <Row>
           <Col>
