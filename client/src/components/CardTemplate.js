@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import "../card.css"
 
 function CardTemplate({props, loggedIn}) {
-
-  const handleUpdate = async function(event){
-    event.preventDefault();
-    try{
-      await fetch("/api/events/$props.id")
-    }catch(error){
-      console.log(error);
-    }
-  }
   const handleDelete = async function(event){
     event.preventDefault();
     try{
@@ -39,8 +31,11 @@ function CardTemplate({props, loggedIn}) {
     </Card>
     {loggedIn && (
       <div>
-        <Button onClick={handleUpdate}>Update</Button>
+        <Button>
+          <Link to="/event-form" state={{event: props}}>Update</Link>
+        </Button>
         <Button onClick={handleDelete}>Delete</Button>
+        
       </div>
     )}
     </div>

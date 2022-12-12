@@ -37,7 +37,7 @@ function UserProfile() {
     return () => {
       // clean up function
     };
-  }, [events]);
+  }, []);
 
   return (
     <div>

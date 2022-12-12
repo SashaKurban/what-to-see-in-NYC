@@ -11,10 +11,7 @@ import MuseumsPage from "../pages/MuseumsPage";
 // import DropdownButton from 'react-bootstrap/DropdownButton';
 // import Nav from "./pages/Nav";
 
-import UserProfile from "../pages/UserProfile";
-import CreateEvent from "../pages/CreateEvent";
-import ProfileCard from "../components/ProfileCard";
-import EditProfile from "../pages/EditProfile";
+
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';

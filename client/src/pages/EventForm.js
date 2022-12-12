@@ -1,5 +1,6 @@
 import { CommandCompleteMessage } from "pg-protocol/dist/messages";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Navigate } from "react-router-dom";
@@ -7,16 +8,23 @@ import "../card.css"
 
 
 export default function CreateEvent() {
-    const [date, setDate] = useState(new Date());
+    const location = useLocation();
+    const event = location.state.event;
+    const [date, setDate] = useState(event ? event.date : new Date());
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
 
-    const[title, setTitle] = useState();
-    const[description, setDescription] = useState();
-    const[price, setPrice] = useState();
-    const[link, setLink] = useState();
-    const[address, setAddress] = useState();
+    const[title, setTitle] = useState(event ? event.title : "");
+    const[description, setDescription] = useState(event ?  event.description : "");
+    const[price, setPrice] = useState(event ?  event.price : "");
+    const[link, setLink] = useState(event? event.link : "");
+    const[address, setAddress] = useState(event ?  event.address : "");
     const[type, setType] = useState('Museums & Art Institutions');
+
+    useEffect(() => {
+        console.log(event);
+    }, []);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -53,8 +61,11 @@ export default function CreateEvent() {
 
     return (
         <div>
-      
-            <h2 className = "title">Create a New Event</h2>
+            {event? (
+                <h2 className = "title">Update Event Information</h2>
+            ):
+            (<h2 className = "title">Create a New Event</h2>)}
+            
             <Form className = "spacing" onSubmit={handleSubmit}>
                 <Form.Group  className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Event Title</Form.Label>
