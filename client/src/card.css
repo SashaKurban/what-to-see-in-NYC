@@ -1,16 +1,16 @@
 .cardStyle{
-    margin-left:9%;
-    margin-top: 5%;
     color: aliceblue;
     font-family: 'Inter';
-
-    
+    margin:15px;
+    width: 390px;
 }
 
 .lowerCard{
     background-color: #4A4E69;
-    width: 390px;
 
+}
+.buttons{
+    margin:5px;
 }
 
 .link-color{
@@ -45,7 +45,7 @@
     float: center;
     margin-top: 2%;
 }
-.updateLink{
+.update-link, .update-link:hover{
     color:white;
     text-decoration: none;
 }

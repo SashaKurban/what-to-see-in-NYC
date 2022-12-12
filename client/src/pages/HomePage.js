@@ -74,9 +74,9 @@ function HomePage(props) {
       <Container>
         <h3 className="locations-place">MUSEUMS and ART INSTITUTIONS</h3>
         {museums && (
-          <div>
+          <div className="event-cards">
           {museums.map((event) => (
-            <CardTemplate key={event.id} props={event} loggedIn={false}/>
+              <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
           }
         </div>

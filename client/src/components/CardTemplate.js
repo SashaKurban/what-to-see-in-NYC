@@ -29,11 +29,11 @@ function CardTemplate({props, loggedIn}) {
       </Card.Body>
     </Card>
     {loggedIn && (
-      <div>
-        <Button>
-          <Link className="updateLink" to="/event-form" state={{eventInfo: props}}>Update</Link>
+      <div className="buttons">
+        <Button className="button">
+          <Link className="update-link" to="/event-form" state={{eventInfo: props}}>Update</Link>
         </Button>
-        <Button onClick={handleDelete}>Delete</Button>
+        <Button className="button" onClick={handleDelete}>Delete</Button>
         
       </div>
     )}

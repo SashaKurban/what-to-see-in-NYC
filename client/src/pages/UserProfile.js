@@ -62,7 +62,7 @@ function UserProfile() {
       <h2 className="profileHeader title">Upcoming Events</h2>
       <Container>
         {events && (
-          <div>
+          <div className="event-cards">
             {events.map((event) => (
               <CardTemplate  key={event.id} props={event} loggedIn={true} />
             ))

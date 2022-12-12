@@ -8,6 +8,12 @@
     margin-top: 5%;
     color:#C9ADA7!important;
     text-shadow: 1px 1px #ffffff, -1px -1px #0e0d0d !important;
+
+}
+.event-cards{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .navbarcolor{
