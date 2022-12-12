@@ -16,6 +16,12 @@
     border-radius: 50%;
     margin-left:10% ;
 }
+.event-cards{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 
 .slideshowImage {
     width: 640px; 

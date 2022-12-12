@@ -4,14 +4,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
-import Button from 'react-bootstrap/Button';
 import ProfileCard from "../components/ProfileCard";
 import "../userprofile.css"
 
 function UserProfile() {
   const [user, setUser] = useState();
   const [events, setEvents] = useState();
-  
+  const[update, setUpdate] = useState(true);
   //fetch data
   useEffect(() => {
     async function getUser() {
@@ -26,24 +25,25 @@ function UserProfile() {
     async function getMyEvents() {
       try {
         let response = await fetch("/api/events/my-events");
-        let data = await response.json();
+        let data = orderAscendingByDate( await response.json());
         setEvents(data);
       } catch (error) {
         console.error("Error fetching all user events", error);
       }
     }
+    function orderAscendingByDate(data){
+      const copyData = []
+      .concat(data)
+      .sort((a, b) => (a.date > b.date ? 1 : -1));
+      return copyData;
+    }
     getUser();
     getMyEvents();
-    return () => {
-      // clean up function
-    };
-  }, []);
+  }, [update]);
 
   return (
     <div>
-      {/* <h1>What to See in NYC</h1> */}
       <h1 className="profileHeader title">Welcome, User!</h1>
-      {/* TODO: Create image upload page*/}
       <Container>
         <Row>
           <Col>
@@ -62,7 +62,7 @@ function UserProfile() {
       <h2 className="profileHeader title">Upcoming Events</h2>
       <Container>
         {events && (
-          <div>
+          <div className="event-cards">
             {events.map((event) => (
               <CardTemplate  key={event.id} props={event} loggedIn={true} />
             ))

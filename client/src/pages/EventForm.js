@@ -1,5 +1,4 @@
-import { CommandCompleteMessage } from "pg-protocol/dist/messages";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -12,8 +11,6 @@ export default function CreateEvent() {
     const eventInfo = location.state ? location.state.eventInfo : null;
     const [date, setDate] = useState(eventInfo ? eventInfo.date : new Date());
     const [success, setSuccess] = useState(false);
-    const [error, setError] = useState(false);
-
     const[title, setTitle] = useState(eventInfo ? eventInfo.title : "");
     const[description, setDescription] = useState(eventInfo ?  eventInfo.description : "");
     const[price, setPrice] = useState(eventInfo ?  eventInfo.price : "");
@@ -46,12 +43,9 @@ export default function CreateEvent() {
             });
             if (response.ok) {
             setSuccess(true);
-            } else {
-            setError(true);
-            }
+            } 
         } catch (error) {
             console.error("Server error while creating new event", error);
-            setError(true);
         }
     };
 
@@ -78,12 +72,9 @@ export default function CreateEvent() {
             });
             if (response.ok) {
             setSuccess(true);
-            } else {
-            setError(true);
-            }
+            } 
         } catch (error) {
             console.error("Server error while updating event ", error);
-            setError(true);
         }
     };
     if (success) return <Navigate to="/user-profile" />;

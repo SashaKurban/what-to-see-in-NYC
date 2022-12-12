@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
@@ -11,6 +11,7 @@ function CardTemplate({props, loggedIn}) {
       const url = "/api/events/" + props.id;
       await fetch(url, {method: "DELETE"})
       .then(() => console.log("deleted event "));
+      window.location.reload(false);
     }catch(error){
       console.log(error);
     }
@@ -23,18 +24,17 @@ function CardTemplate({props, loggedIn}) {
         <Card.Title>Title: {props.title}</Card.Title>
         <Card.Text>Date: {props.date}</Card.Text>
         <Card.Text>Description: {props.description}</Card.Text>
-        {/* <Button variant="primary">{props.eventRegistrationLink}</Button> */}
         <Card.Text>Price: ${props.price}</Card.Text>
         <Card.Text>Address: {props.address}</Card.Text>
         <Card.Link href={props.link} target="_blank" className="link-color">Register</Card.Link>
       </Card.Body>
     </Card>
     {loggedIn && (
-      <div>
-        <Button>
-          <Link className="updateLink" to="/event-form" state={{eventInfo: props}}>Update</Link>
+      <div className="buttons">
+        <Button className="button">
+          <Link className="update-link" to="/event-form" state={{eventInfo: props}}>Update</Link>
         </Button>
-        <Button onClick={handleDelete}>Delete</Button>
+        <Button className="button" onClick={handleDelete}>Delete</Button>
         
       </div>
     )}

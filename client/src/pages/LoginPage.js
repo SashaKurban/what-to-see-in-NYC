@@ -12,8 +12,7 @@ function  LoginPage(props) {
   const[bio, setBio] = useState("");
   const[email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
-
+ 
   let [authMode, setAuthMode] = useState("signin")
 
   const changeAuthMode = () => {
@@ -38,12 +37,9 @@ function  LoginPage(props) {
       });
       if (response.ok) {
         setSuccess(true);
-      } else {
-        setError(true);
-      }
+      } 
     } catch (error) {
       console.error("Server error while creating a new user", error);
-      setError(true);
     }
   };
   
@@ -57,7 +53,6 @@ function  LoginPage(props) {
       
     } catch (error) {
       console.error("Server error while loging in", error);
-      setError(true);
     }
     
   };
