@@ -10,7 +10,7 @@ import "../userprofile.css"
 function UserProfile() {
   const [user, setUser] = useState();
   const [events, setEvents] = useState();
-  
+  const[update, setUpdate] = useState(true);
   //fetch data
   useEffect(() => {
     async function getUser() {
@@ -39,7 +39,7 @@ function UserProfile() {
     }
     getUser();
     getMyEvents();
-  }, [events]);
+  }, [update]);
 
   return (
     <div>

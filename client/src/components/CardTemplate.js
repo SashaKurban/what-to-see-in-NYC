@@ -11,6 +11,7 @@ function CardTemplate({props, loggedIn}) {
       const url = "/api/events/" + props.id;
       await fetch(url, {method: "DELETE"})
       .then(() => console.log("deleted event "));
+      window.location.reload(false);
     }catch(error){
       console.log(error);
     }

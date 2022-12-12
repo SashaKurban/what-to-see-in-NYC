@@ -84,7 +84,7 @@ function HomePage(props) {
         <br/>
         <h3 className="locations-place">PARKS and PUBLIC SPACES</h3>
         {parks && (
-          <div>
+          <div className="event-cards">
           {parks.map((event) => (
             <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
@@ -94,7 +94,7 @@ function HomePage(props) {
         <br />
         <h3 className="locations-place">SHOWS and CONCERTS</h3>
         {concerts && (
-          <div>
+          <div className="event-cards">
           {concerts.map((event) => (
             <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
@@ -106,7 +106,7 @@ function HomePage(props) {
         
         
         {free && (
-          <div>
+          <div className="event-cards">
       
           {free.map((event) => (
             <CardTemplate key={event.id} props={event} loggedIn={false}/>
@@ -118,7 +118,7 @@ function HomePage(props) {
         <br />
         <h3 className="locations-place">ATTRACTIONS and TOURS</h3>
         {tours && (
-          <div>
+          <div className="event-cards">
           {tours.map((event) => (
             <CardTemplate key={event.id} props={event} loggedIn={false}/>
           ))
