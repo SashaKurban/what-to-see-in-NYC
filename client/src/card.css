@@ -31,9 +31,6 @@
 
 
 
-.spacing{
-    margin-left: 30%;
-}
 
 .smaller-input{
     width: 60% !important;
@@ -48,4 +45,36 @@
 .update-link, .update-link:hover{
     color:white;
     text-decoration: none;
+}
+
+
+/* button filter */
+.color-button-align{
+    color:#4A4E69;
+    background-color: #4A4E69 !important;
+    margin-left: 63%;
+    margin-top: -17%;
+   
+}
+.clear-filter-button{
+    color:#4A4E69;
+    background-color: #4A4E69 !important;
+    margin-left: 78%;
+    margin-top: -25%;
+   
+}
+
+
+.spacing{
+    margin-left: 30%;
+    width: 600px;
+
+}
+
+.main-title{
+    text-align: center;
+    margin-top: 2%;
+    font-family: 'Inter';
+    color:#C9ADA7!important;
+    text-shadow: 1px 1px #ffffff, -1px -1px #0e0d0d !important;
 }
