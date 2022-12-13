@@ -3,6 +3,8 @@ import CardTemplate from "../components/CardTemplate";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'; 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function HomePage(props) {
   const[museums, setMuseums] = useState();
@@ -94,9 +96,11 @@ function HomePage(props) {
 
   return (
     <div>
-      <Form className = "spacing" onSubmit={handleSubmit}>
+    <h1 className="main-title">What to See in NYC</h1>
+   
+        <Form className = "spacing" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Label>Filter By Date</Form.Label>
+         <Form.Label>Filter By Date</Form.Label> 
           <Form.Control
             className="smaller-input"
               type="date"
@@ -106,13 +110,14 @@ function HomePage(props) {
               onChange={(e) => setDate(e.target.value)}
           />
         </Form.Group>
-        <Button className= "color-button" type="submit">
+       <Button className= "color-button-align" type="submit">
           Submit
         </Button>
-        <Button onClick={clearFilter} className= "color-button" type="submit">
+         <Button onClick={clearFilter} className= "clear-filter-button" type="submit">
           Clear Filter
         </Button>
       </Form>
+     
       {sortByDate && (
         <Container>
           <h3 className="locations-place">Events for {date}</h3>
@@ -122,6 +127,7 @@ function HomePage(props) {
             ))
             }
           </div>
+      
         </Container>
       )}
       {!sortByDate && (
