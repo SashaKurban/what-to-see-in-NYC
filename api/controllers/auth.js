@@ -15,6 +15,7 @@ router.post("/signup", (req, res) => {
     });
 });
 
+
 router.post("/login", passport.authenticate("local"), (req, res) => {
   // If this function gets called, authentication was successful.
   // `req.user` contains the authenticated user.
